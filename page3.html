@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinometer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .output {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div class="container">
+        <h2><font color = "blue">two angle with only incline</font></h2>
+        <div class="input-group">
+            <label for="angle1">Angle 1 (degrees):</label>
+            <input type="number" id="angle1">
+        </div>
+        <div class="input-group">
+            <label for="angle2">Angle 2 (degrees):</label>
+            <input type="number" id="angle2">
+        </div>
+        <div class="input-group">
+            <label for="distanceBetweenAngles">Distance between angles (ca):</label>
+            <input type="number" id="distanceBetweenAngles">
+        </div>
+        <div class="input-group">
+            <label for="distanceToObject">Distance between object and angle (x):</label>
+            <input type="number" id="distanceToObject">
+        </div>
+        <div class="input-group">
+            <label for="height">Height of the object (y):</label>
+            <input type="number" id="height">
+        </div>
+        <button id="calculateButton">Calculate Height</button>
+        <div class="output">
+            <p>Calculated Height: <span id="calculatedHeight">---</span> units</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('calculateButton').addEventListener('click', function () {
+            const angle1 = parseFloat(document.getElementById('angle1').value);
+            const angle2 = parseFloat(document.getElementById('angle2').value);
+            const ca = parseFloat(document.getElementById('distanceBetweenAngles').value);
+            const x = parseFloat(document.getElementById('distanceToObject').value);
+            const y = parseFloat(document.getElementById('height').value);
+
+            let filledFields = 0;
+            if (!isNaN(angle1)) filledFields++;
+            if (!isNaN(angle2)) filledFields++;
+            if (!isNaN(ca)) filledFields++;
+            if (!isNaN(x)) filledFields++;
+            if (!isNaN(y)) filledFields++;
+
+            if (filledFields < 3) {
+                alert('Please fill at least 3 fields.');
+                return;
+            }
+
+            let calculatedHeight;
+
+            if (isNaN(y)) {
+                const radAngle1 = angle1 * (Math.PI / 180);
+                const radAngle2 = angle2 * (Math.PI / 180);
+                calculatedHeight = ((ca * Math.tan(radAngle1) * Math.tan(radAngle2)) / (Math.tan(radAngle1) - Math.tan(radAngle2))).toFixed(8);
+                document.getElementById('height').value = calculatedHeight;
+            } else {
+                calculatedHeight = y;
+            }
+
+            document.getElementById('calculatedHeight').textContent = calculatedHeight + ' units';
+        });
+    </script>
+</body>
+
+</html>
