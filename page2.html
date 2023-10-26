@@ -1,25 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>One angle with only incline </title>
+    <title>One angle with only incline</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-    <div class="clinometer-container">
-        <h2><font color = "blue">One angle with only incline</font></h2>
-        <label for="distance">Distance from Object in m (x):</label><br>
-        <input type="number" id="distance" placeholder="Enter distance (x)"><br>
-        <label for="height">Height of Object in m (y):</label><br>
-        <input type="number" id="height" placeholder="Enter height (y)"><br>
-        <label for="angle">Angle:</label><br>
-        <input type="number" id="angle" placeholder="Enter angle"><br>
-        <div class="result" id="result"></div>
-    </div>
-    <script src="page2.js"></script>
-</body>
+    <div class="container">
+      <font color = "blue">One angle with only incline</font>
+      <br>
+      <br>
+        <label for="x">Enter x (m): </label>
+        <input type="number" id="x" step="0.01">
+        <br>
+        <br>
+        <br>
 
+        <label for="y">Enter y (m): </label>
+        <input type="number" id="y" step="0.01">
+        <br>
+        <br>
+        <br>
+
+        <label for="theta">Enter theta (°): </label>
+        <input type="number" id="theta" step="0.01">
+        <br>
+        <br>
+        <br>
+
+        <button onclick="calculate()">Calculate</button>
+        <br>
+        
+    </div>
+
+    <script src="script2.js"></script>
+</body>
 </html>
