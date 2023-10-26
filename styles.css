@@ -1,25 +1,15 @@
 body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 50px;
+    font-family: Arial, sans-serif;
 }
 
-.clinometer-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
+.container {
+    max-width: 3000px;
+    margin: 50px auto;
+    text-align: center;
 }
 
-label, input {
-    margin-bottom: 10px;
-}
-
-.result {
-    font-weight: bold;
-    font-size: 18px;
-}
-h2{
+font{
+    text-overflow: clip;
+    font-size: 3vh;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
